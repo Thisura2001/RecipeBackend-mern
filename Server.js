@@ -8,7 +8,7 @@ app.use(express.json())
 app.use(cors())
 app.use('/api',router)
 
-mongoose.connect("mongodb+srv://thisura:thisura1234@demo.sckhk.mongodb.net/recipeFinder?retryWrites=true&w=majority&appName=Demo")
+mongoose.connect("mongodb+srv://thisuravimukthi123:ruz7wkGkOTF7ZAXv@demo.0lltv.mongodb.net/recipeFinder?retryWrites=true&w=majority&appName=Demo")
     .then(()=>{
         console.log("Connect into the MongoDb")
     })
