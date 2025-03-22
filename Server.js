@@ -1,23 +1,28 @@
 const express = require('express');
-const mongoose = require('mongoose')
-const cors = require('cors')
-const router = require('./Router/MealRouter')
+const mongoose = require('mongoose');
+const cors = require('cors');
+const router = require('./Router/MealRouter');
 
-const app = express()
-app.use(express.json())
-app.use('/api',router)
+const app = express();
+
+// Apply CORS Middleware BEFORE defining routes
 app.use(cors({
-    origin: '*',
+    origin: 'http://localhost:5173',
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    credentials: true
+    allowedHeaders: ['Content-Type']
 }));
+
+app.use(express.json());
+app.use(router);
+
 mongoose.connect("mongodb+srv://thisuravimukthi123:ruz7wkGkOTF7ZAXv@demo.0lltv.mongodb.net/recipeFinder?retryWrites=true&w=majority&appName=Demo")
-    .then(()=>{
-        console.log("Connect into the MongoDb")
+    .then(() => {
+        console.log("Connected to MongoDB");
     })
-    .catch(e=>{
-        console.log("Error connecting MongoDb ",e)
-    })
-app.listen(3000,()=>{
-    console.log("Server start at port number 3000")
-})
+    .catch(e => {
+        console.log("Error connecting to MongoDB", e);
+    });
+
+app.listen(3000, () => {
+    console.log("Server started on port 3000");
+});
