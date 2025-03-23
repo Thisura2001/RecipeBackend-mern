@@ -4,8 +4,6 @@ const cors = require('cors');
 const router = require('./Router/MealRouter');
 
 const app = express();
-
-// Apply CORS Middleware BEFORE defining routes
 app.use(cors({
     origin: 'http://localhost:5173',
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
