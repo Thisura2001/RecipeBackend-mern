@@ -31,21 +31,6 @@ router.post('/add', async (req, res, next) => {
     }
 });
 
-router.put('/update/:id', async (req, res, next) => {
-    const { name, area, instructions, image, source } = req.body;
-    try {
-        const updateMeal = await Meal.findByIdAndUpdate(
-            req.params.id,
-            { name, area, instructions, image, source },
-            { new: true }
-        );
-        res.status(200).json(updateMeal);
-    } catch (error) {
-        console.log("Error updating Meal", error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-});
-
 router.delete('/delete/:id', async (req, res, next) => {
     try {
         const deleteMeal = await Meal.findByIdAndDelete(req.params.id);
