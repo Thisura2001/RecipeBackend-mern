@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Meal = require('../Model/Meal');
 const mongoose = require('mongoose');
-const { ObjectId } = mongoose.Types;
-
-
 router.get('/', async (req, res, next) => {
     try {
         const meals = await Meal.find();
@@ -27,6 +24,7 @@ router.post('/add', async (req, res, next) => {
             source
         });
         const saveMeal = await meal.save();
+        console.log("Meal added successfully", saveMeal);
         res.status(201).json(saveMeal);
     } catch (e) {
         console.log("Error adding Meal", e);
@@ -50,7 +48,7 @@ router.delete('/delete/:id', async (req, res) => {
         if (!deleteMeal) {
             return res.status(404).json({ error: 'Meal not found' });
         }
-
+        console.log("Meal deleted successfully", deleteMeal);
         res.status(200).json({ message: 'Meal deleted successfully', meal: deleteMeal });
     } catch (error) {
         console.error("Error deleting Meal:", error);
