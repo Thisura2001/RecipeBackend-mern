@@ -5,7 +5,7 @@ const router = require('./Router/MealRouter');
 
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: '*',
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
     allowedHeaders: ['Content-Type']
 }));
